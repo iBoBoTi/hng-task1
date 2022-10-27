@@ -11,7 +11,7 @@ func HandleShowStudentProfile(c *gin.Context) {
 	myProfile := &domain.StudentProfile{
 		SlackUserName: "BoBoTi",
 		Backend:       true,
-		Age:           27,
+		Age:           72,
 		Bio:           "I am software engineer in the backend stack with proficiency in the Go language...",
 	}
 	c.JSON(http.StatusOK, myProfile)
