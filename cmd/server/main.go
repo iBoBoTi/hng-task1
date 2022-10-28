@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"time"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -28,14 +27,7 @@ func main() {
 	router := gin.New()
 	router.Use(gin.Recovery())
 	// setup cors
-	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"*"},
-		AllowMethods:     []string{"POST", "GET", "PUT", "PATCH", "DELETE"},
-		AllowHeaders:     []string{"*"},
-		ExposeHeaders:    []string{"Content-Length","access-control-allow-origin","access-control-allow-headers"},
-		AllowCredentials: true,
-		MaxAge: 12 * time.Hour,
-	}))
+	router.Use(cors.Default())
 	router.GET("/my-profile", handler.HandleShowStudentProfile)
 
 	log.Printf("starting server at port: %s", port)
