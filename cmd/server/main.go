@@ -26,7 +26,7 @@ func main() {
 		port = "8080"
 	}
 
-	router := gin.Default()
+	router := gin.New()
 	router.Use(gin.Recovery())
 	// setup cors
 	router.Use(cors.New(cors.Config{
