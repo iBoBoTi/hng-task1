@@ -5,7 +5,9 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/iBoBoTi/hng-task1/internal/handler"
 	"github.com/joho/godotenv"
@@ -19,15 +21,25 @@ func main() {
 		}
 	}
 
-	port:= os.Getenv("PORT")
-	if port == ""{
+	port := os.Getenv("PORT")
+	if port == "" {
 		port = "8080"
 	}
 
 	router := gin.Default()
+	router.Use(gin.Recovery())
+	// setup cors
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"*"},
+		AllowMethods:     []string{"POST", "GET", "PUT", "PATCH", "DELETE"},
+		AllowHeaders:     []string{"*"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge: 12 * time.Hour,
+	}))
 	router.GET("/my-profile", handler.HandleShowStudentProfile)
 
 	log.Printf("starting server at port: %s", port)
-	http.ListenAndServe(fmt.Sprintf(":%s",port), router)
+	http.ListenAndServe(fmt.Sprintf(":%s", port), router)
 
 }
