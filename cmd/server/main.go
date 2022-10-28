@@ -33,7 +33,7 @@ func main() {
 		AllowOrigins:     []string{"*"},
 		AllowMethods:     []string{"POST", "GET", "PUT", "PATCH", "DELETE"},
 		AllowHeaders:     []string{"*"},
-		ExposeHeaders:    []string{"Content-Length"},
+		ExposeHeaders:    []string{"Content-Length","access-control-allow-origin","access-control-allow-headers"},
 		AllowCredentials: true,
 		MaxAge: 12 * time.Hour,
 	}))
