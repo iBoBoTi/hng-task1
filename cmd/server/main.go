@@ -40,6 +40,6 @@ func main() {
 	router.GET("/my-profile", handler.HandleShowStudentProfile)
 
 	log.Printf("starting server at port: %s", port)
-	http.ListenAndServe(fmt.Sprintf(":%s", port), router)
+	router.Run(fmt.Sprintf(":%s", port))
 
 }
