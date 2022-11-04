@@ -7,8 +7,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/iBoBoTi/hng-task1/internal/handler"
-	"github.com/joho/godotenv"
 	"github.com/iBoBoTi/hng-task1/internal/middleware"
+	"github.com/joho/godotenv"
 )
 
 func main() {
@@ -29,6 +29,7 @@ func main() {
 	// setup cors
 	router.Use(middleware.CORS())
 	router.GET("/my-profile", handler.HandleShowStudentProfile)
+	router.POST("/math", handler.HandleMathOperation)
 
 	log.Printf("starting server at port: %s", port)
 	router.Run(fmt.Sprintf(":%s", port))
