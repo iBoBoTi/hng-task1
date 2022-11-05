@@ -29,7 +29,7 @@ func main() {
 	// setup cors
 	router.Use(middleware.CORS())
 	router.GET("/my-profile", handler.HandleShowStudentProfile)
-	router.POST("/math", handler.HandleMathOperation)
+	router.POST("/math-operation", handler.HandleMathOperation)
 
 	log.Printf("starting server at port: %s", port)
 	router.Run(fmt.Sprintf(":%s", port))
