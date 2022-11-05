@@ -37,19 +37,19 @@ func SolveMath(m *Math) *MathOperationResponse {
 	var response MathOperationResponse
 	response.SlackUserName = "BoBoTi"
 	switch m.OperationType {
-	case "addition":
+	case Addition.String():
 		response.Result = m.FirstOperand + m.SecondOperand
-		response.OperationType = m.OperationType
+		response.OperationType = Addition.String()
 
 		return &response
-	case "subtraction":
+	case Subtraction.String():
 		response.Result = m.FirstOperand - m.SecondOperand
-		response.OperationType = m.OperationType
+		response.OperationType = Subtraction.String()
 
 		return &response
-	case "multiplication":
-		response.Result = m.FirstOperand + m.SecondOperand
-		response.OperationType = m.OperationType
+	case Multiplication.String():
+		response.Result = m.FirstOperand * m.SecondOperand
+		response.OperationType = Multiplication.String()
 
 		return &response
 	}

@@ -16,5 +16,9 @@ func HandleMathOperation(c *gin.Context) {
 	}
 
 	response := domain.SolveMath(&reqMath)
+	if response == nil {
+		c.JSON(http.StatusBadRequest, gin.H{"errors": "invalid operation"})
+		return
+	}
 	c.JSON(http.StatusOK, response)
 }
